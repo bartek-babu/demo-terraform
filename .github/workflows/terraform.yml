@@ -35,7 +35,7 @@ jobs:
         cat > pipeline.auto.tfvars <<EOF
         region="${{ vars.GCP_REGION }}" 
         project="${{ vars.GCP_PROJECT }}"
-        TF_VAR_db_password="${{ vars.TF_VAR_db_password }}" 
+        db_password="${{ vars.TF_VAR_db_password }}" 
         EOF
         
     # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
