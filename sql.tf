@@ -15,8 +15,8 @@ resource "google_sql_database_instance" "web-app-sql" {
       ipv4_enabled    = false
       private_network = google_compute_network.web-app-vpc.self_link
     }
-
   }
+  depends_on = [google_service_networking_connection.private_vpc_connection]
 }
 
 resource "google_sql_database" "web-app-db" {

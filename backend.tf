@@ -1,5 +1,6 @@
 terraform {
-  backend "local" {
-    path = ".backend/terraform.tfstate"
+  backend "gcs" {
+    bucket  = "dev-tf-state-5675"
+    prefix  = "terraform/state"
   }
 }

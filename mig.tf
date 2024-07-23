@@ -29,7 +29,6 @@ resource "google_compute_region_instance_group_manager" "regional_instance_group
   name                      = "web-app-mig"
   base_instance_name        = "web-app"
   region                    = var.region
-  target_size               = 3
   distribution_policy_zones = var.zones
 
   version {
@@ -47,4 +46,19 @@ resource "google_compute_region_instance_group_manager" "regional_instance_group
   }
 
   depends_on = [google_compute_instance_template.web-app-template]
+}
+
+resource "google_compute_region_autoscaler" "web-app-autoscaler" {
+  name   = "web-app-autoscaler"
+  target = google_compute_region_instance_group_manager.regional_instance_group_manager.id
+
+  autoscaling_policy {
+    max_replicas    = 5
+    min_replicas    = 1
+    cooldown_period = 60
+
+    cpu_utilization {
+      target = 0.7
+    }
+  }
 }
