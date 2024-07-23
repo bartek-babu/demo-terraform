@@ -11,7 +11,7 @@ resource "google_compute_backend_service" "web-app" {
   name                            = "web-backend-service"
   health_checks                   = [google_compute_health_check.web-app.self_link]
   load_balancing_scheme           = "EXTERNAL"
-  port_name                       = "http"
+  port_name                             = "http"
   protocol                        = "HTTP"
   timeout_sec                     = 10
   connection_draining_timeout_sec = 300

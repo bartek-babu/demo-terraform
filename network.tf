@@ -18,7 +18,7 @@ resource "google_compute_firewall" "allow-to-server" {
     ports    = ["80", "443"]
   }
 
-  source_ranges = ["213.134.188.216/32"] # my ip :P
+  source_ranges = var.allowed_ranges
   target_tags   = ["http-server"]
 }
 
@@ -31,6 +31,6 @@ resource "google_compute_firewall" "allow-hc" {
     ports    = ["80", "443"]
   }
 
-  source_ranges = ["35.191.0.0/16"] # my ip :P
+  source_ranges = var.google_hc_ip
   target_tags   = ["http-server"]
 }
