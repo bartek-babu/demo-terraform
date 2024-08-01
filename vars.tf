@@ -1,5 +1,5 @@
 variable "project_id" {
-  default = "inpost-demo-5675"
+  default = ""
   type    = string
 }
 
@@ -30,7 +30,7 @@ variable "id_suffix" {
 }
 
 variable "allowed_ranges" {
-  default = ["213.134.188.216/32"]
+  default = []
   type = list
 }
 
